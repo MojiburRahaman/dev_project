@@ -23,38 +23,50 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } elseif (!preg_match($email_preg, $email)) {
         // edit email valid check
         header('location:edit-profile.php');
-    } elseif (!in_array($ext, $formate)) {
-        header('location:edit-profile.php');
-    } else {
+    } elseif (empty($img)) {
 
-        $img_name = $id . '.' . $ext;
+        $update_profile = "UPDATE `users` SET `name`= '$name',`email`='$email' WHERE id = $id ";
+        $q = mysqli_query($data, $update_profile);
 
-        // default image check query start
-        $image_check = "SELECT * FROM users where id= '$id' ";
-        $image_query = mysqli_query($data, $image_check);
-        $image_assoc = mysqli_fetch_assoc($image_query);
-        $old_image = 'img-upload/' . $image_assoc['profile_img'];
-
-
-        if ($image_assoc['profile_img'] != 'default.png') {
-
-            if (file_exists($old_image)) {
-                unlink($old_image);
-            }
-        }
-        // default image check query end
-
-        $uplode_img = 'img-upload/' . $img_name;
-        move_uploaded_file($_FILES['profile_pic']['tmp_name'], $uplode_img);
-
-        $update_user_profile = "UPDATE `users` SET `name`= '$name',`email`='$email', `profile_img`='$img_name' WHERE id = $id ";
-
-        if (mysqli_query($data, $update_user_profile)) {
+        if ($q) {
             $_SESSION['name'] = $name;
             $_SESSION['profile_update_msg'] = 'Profile Update Successfully';
             header('location:edit-profile.php');
+        }
+    } else {
+        if (!in_array($ext, $formate)) {
+            header('location:edit-profile.php');
+        } else {
+            $img_name = $id . '.' . $ext;
+
+            // default image check query start
+            $image_check = "SELECT * FROM users where id= '$id' ";
+            $image_query = mysqli_query($data, $image_check);
+            $image_assoc = mysqli_fetch_assoc($image_query);
+            $old_image = 'img-upload/' . $image_assoc['profile_img'];
+
+
+            if ($image_assoc['profile_img'] != 'default.png') {
+
+                if (file_exists($old_image)) {
+                    unlink($old_image);
+                }
+            }
+            // default image check query end
+
+            $uplode_img = 'img-upload/' . $img_name;
+            move_uploaded_file($_FILES['profile_pic']['tmp_name'], $uplode_img);
+
+            $update_user_profile = "UPDATE `users` SET `name`= '$name',`email`='$email', `profile_img`='$img_name' WHERE id = $id ";
+
+            if (mysqli_query($data, $update_user_profile)) {
+                $_SESSION['name'] = $name;
+                $_SESSION['profile_update_msg'] = 'Profile Update Successfully';
+                header('location:edit-profile.php');
+            }
         }
     }
 } else {
     header('location:dashboard.php');
 }
+?>

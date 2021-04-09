@@ -1,5 +1,5 @@
 <?php
-session_start();
+require_once"session.php";
 require_once "../data.php";
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $name = $_POST['name'];

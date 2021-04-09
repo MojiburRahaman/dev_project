@@ -6,6 +6,10 @@ $social_icon = mysqli_query($data, $social);
 
 $services = "SELECT * FROM services WHERE status = 1";
 $service_q = mysqli_query($data, $services);
+
+$profile = "SELECT * FROM profile";
+$profile_q = mysqli_query($data, $profile);
+$profile_assoc = mysqli_fetch_assoc($profile_q);
 ?>
 
 <html class="no-js" lang="en">
@@ -110,10 +114,22 @@ $service_q = mysqli_query($data, $services);
                 </div>
             </div>
             <div class="social-icon-right mt-20">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-google-plus-g"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
+                <?php
+                foreach ($social_icon as $key => $value) { ?>
+                    <a target="_blank" href="<?php
+                                                if (strstr($value['link'], 'https://')) {
+                                                    echo $value['link'];
+                                                } else {
+                                                    if (strstr($value['link'], 'http://')) {
+                                                        echo $value['link'];
+                                                    } else {
+                                                        echo 'https://' . $value['link'];
+                                                    }
+                                                }
+                                                ?>"> <i class="<?= $value['icon'] ?>"></i></a></li>
+
+                <?php }
+                ?>
             </div>
         </div>
         <div class="offcanvas-overly"></div>
@@ -131,8 +147,8 @@ $service_q = mysqli_query($data, $services);
                     <div class="col-xl-7 col-lg-6">
                         <div class="banner-content">
                             <h6 class="wow fadeInUp" data-wow-delay="0.2s">HELLO!</h6>
-                            <h2 class="wow fadeInUp" data-wow-delay="0.4s">I am Will Smith</h2>
-                            <p class="wow fadeInUp" data-wow-delay="0.6s">I'm Will Smith, professional web developer with long time experience in this field​.</p>
+                            <h2 class="wow fadeInUp" data-wow-delay="0.4s">I am <?= $profile_assoc['user_name']; ?></h2>
+                            <p class="wow fadeInUp" data-wow-delay="0.6s">I'm <?= $profile_assoc['user_name']; ?> , <?= $profile_assoc['tagline']; ?></p>
                             <div class="banner-social wow fadeInUp" data-wow-delay="0.8s">
                                 <ul>
                                     <?php
@@ -143,11 +159,9 @@ $service_q = mysqli_query($data, $services);
                                                                         } else {
                                                                             if (strstr($value['link'], 'http://')) {
                                                                                 echo $value['link'];
-                                                                            }
-                                                                            else {
+                                                                            } else {
                                                                                 echo 'https://' . $value['link'];
                                                                             }
-                                                                            
                                                                         }
                                                                         ?>">
                                                 <i class="<?= $value['icon'] ?>"></i></a></li>
@@ -162,7 +176,7 @@ $service_q = mysqli_query($data, $services);
                     </div>
                     <div class="col-xl-5 col-lg-6 d-none d-lg-block">
                         <div class="banner-img text-right">
-                            <img src="front/img/banner/banner_img.png" alt="">
+                            <img src="dashboard/img-upload/user_image/<?= $profile_assoc['user_image']; ?>" alt="">
                         </div>
                     </div>
                 </div>
@@ -186,9 +200,7 @@ $service_q = mysqli_query($data, $services);
                             <h2>About Me</h2>
                         </div>
                         <div class="about-content">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum, sed repudiandae odit deserunt, quas
-                                quibusdam necessitatibus nesciunt eligendi esse sit non reprehenderit quisquam asperiores maxime
-                                blanditiis culpa vitae velit. Numquam!</p>
+                            <p><?= $profile_assoc['about']; ?></p>
                             <h3>Education:</h3>
                         </div>
                         <!-- Education Item -->
