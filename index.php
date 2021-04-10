@@ -10,6 +10,17 @@ $service_q = mysqli_query($data, $services);
 $profile = "SELECT * FROM profile";
 $profile_q = mysqli_query($data, $profile);
 $profile_assoc = mysqli_fetch_assoc($profile_q);
+
+// primary office query start
+$primnary_offc = "SELECT * FROM `offices` WHERE status = 1";
+$primnary_offc_q = mysqli_query($data, $primnary_offc);
+$primnary_offc_assoc =  mysqli_fetch_assoc($primnary_offc_q);
+// primary office query end
+
+// sub office query start
+$sub_office = "SELECT * FROM `offices` WHERE status = 2";
+$sub_office_q = mysqli_query($data, $sub_office);
+// sub office query end
 ?>
 
 <html class="no-js" lang="en">
@@ -101,16 +112,19 @@ $profile_assoc = mysqli_fetch_assoc($profile_q);
             <div class="side-info mb-30">
                 <div class="contact-list mb-30">
                     <h4>Office Address</h4>
-                    <p>123/A, Miranda City Likaoli
-                        Prikano, Dope</p>
+                    <p>
+                        <?= $primnary_offc_assoc['adress'] ?>
+                    </p>
                 </div>
                 <div class="contact-list mb-30">
                     <h4>Phone Number</h4>
-                    <p>+0989 7876 9865 9</p>
+                    <p> <?= $primnary_offc_assoc['phone'] ?></p>
                 </div>
                 <div class="contact-list mb-30">
                     <h4>Email Address</h4>
-                    <p>info@example.com</p>
+                    <p>
+                        <?= $primnary_offc_assoc['email'] ?>
+                    </p>
                 </div>
             </div>
             <div class="social-icon-right mt-20">
@@ -536,14 +550,19 @@ $profile_assoc = mysqli_fetch_assoc($profile_q);
                         </div>
                         <div class="contact-content">
                             <p>Event definition is - somthing that happens occurre How evesnt sentence. Synonym when an unknown printer took a galley.</p>
-                            <h5>OFFICE IN <span>NEW YORK</span></h5>
-                            <div class="contact-list">
-                                <ul>
-                                    <li><i class="fas fa-map-marker"></i><span>Address :</span>Event Center park WT 22 New York</li>
-                                    <li><i class="fas fa-headphones"></i><span>Phone :</span>+9 125 645 8654</li>
-                                    <li><i class="fas fa-globe-asia"></i><span>e-mail :</span>info@exemple.com</li>
-                                </ul>
-                            </div>
+                            <?php
+                            foreach ($sub_office_q as $key => $value) { ?>
+                            <br>
+                                <h5>OFFICE IN <span><?=ucwords($value['country']);?></span></h5>
+                                <div class="contact-list">
+                                    <ul>
+                                        <li><i class="fas fa-map-marker"></i><span>Address :</span><?= $value['adress']; ?></li>
+                                        <li><i class="fas fa-headphones"></i><span>Phone :</span><?= $value['phone']; ?></li>
+                                        <li><i class="fas fa-globe-asia"></i><span>e-mail :</span><?= $value['email']; ?></li>
+                                    </ul>
+                                </div>
+                            <?php }
+                            ?>
                         </div>
                     </div>
                     <div class="col-lg-6">
