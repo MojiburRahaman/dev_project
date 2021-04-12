@@ -23,6 +23,7 @@ $sub_office_q = mysqli_query($data, $sub_office);
         <div class="sl-page-title">
             <!-- warning message -->
             <div class="primay_office">
+            <h3 class="text-center">Head Office Address</h3>
                 <?php
                 if (isset($_SESSION['primary_add'])) { ?>
                     <div class="alert alert-success ">
@@ -50,7 +51,7 @@ $sub_office_q = mysqli_query($data, $sub_office);
                 <!-- warning message end -->
 
                 <!-- primary office address start -->
-                <h3 class="text-center">Office Address</h3>
+               
                 <?php
                 if ($primnary_offc_assoc['total'] < 1) { ?>
                     <div class="text-right">
@@ -63,7 +64,7 @@ $sub_office_q = mysqli_query($data, $sub_office);
                     <table class="table table-bordered">
                         <thead>
                             <tr class="info">
-                                <th style="background-color: #DC143C; color:white;" class="text-center">Primary Office Address</th>
+                                <th style="background-color: #DC143C; color:white;" class="text-center">Head Office Address</th>
                                 <th style="background-color: #DC143C; color:white;" class="text-center">Phone</th>
                                 <th style="background-color: #DC143C; color:white;" class="text-center">Email</th>
 
@@ -92,7 +93,7 @@ $sub_office_q = mysqli_query($data, $sub_office);
             <!-- primary office address end -->
 
             <div class="sub_office">
-                <h3 class="text-center">Sub Office Address</h3>
+                <h3 class="text-center">Branch Office Address</h3>
                 <!-- sub office warning massege  -->
                 <?php
                 if (isset($_SESSION['sub_add'])) { ?>
@@ -136,7 +137,7 @@ $sub_office_q = mysqli_query($data, $sub_office);
                 <div class="text-right">
                     <a href="sub-office-add.php">
                         <i class="fa fa-plus"></i>
-                        Add Sub office Address
+                        Add Branch office Address
                     </a>
                 </div>
 
@@ -145,7 +146,7 @@ $sub_office_q = mysqli_query($data, $sub_office);
                         <tr class="info">
                             <th style="background-color: #DC143C; color:white;" class="text-center">SL</th>
                             <th style="background-color: #DC143C; color:white;" class="text-center">Place Name</th>
-                            <th style="background-color: #DC143C; color:white;" class="text-center">Sub Office Address</th>
+                            <th style="background-color: #DC143C; color:white;" class="text-center">Branch Office Address</th>
                             <th style="background-color: #DC143C; color:white;" class="text-center">Phone</th>
                             <th style="background-color: #DC143C; color:white;" class="text-center">Email</th>
                             <th style="background-color: #DC143C; color:white;" class="text-center">Action</th>

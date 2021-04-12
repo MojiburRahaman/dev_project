@@ -75,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $password = password_hash($_POST['pwd'], PASSWORD_DEFAULT);
       $insert_data = "INSERT INTO `users`( `name`, `email`, `passwords`) VALUES ('$name','$email','$password')";
       $query = mysqli_query($data, $insert_data);
-      header('location:dashboard/dashboard.php');
+      header('location:login.php');
     }
   }
 } else {

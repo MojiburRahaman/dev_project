@@ -57,8 +57,8 @@ $_SESSION['primary_edit_office_id'] = $id ;
               </div>
             </div>
             <div class="form-layout-footer">
-              <button class="btn btn-info mg-r-5">Submit Form</button>
-              <button class="btn btn-secondary">Cancel</button>
+              <button  class="btn btn-info mg-r-5">Submit Form</button>
+              <button  class="btn btn-secondary">Cancel</button>
             </div><!-- form-layout-footer -->
        <!-- form-layout -->
       </div>

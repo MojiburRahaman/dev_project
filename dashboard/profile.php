@@ -1,8 +1,5 @@
 <?php
 require 'inc/header.php';
-// // active user data_query
-// $select_data = "SELECT * FROM `profile`";
-// $data_query = mysqli_query($data, $select_data);
 
 $add_limit = "SELECT COUNT(*) as total,id,user_name,tagline,about,user_image FROM `profile`";
 $add_q = mysqli_query($data, $add_limit);

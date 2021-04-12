@@ -2,7 +2,8 @@
 require_once"session.php";
 require_once"../data.php";
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $id = $_SESSION['profile_edit_id'];
+    $id = $_SESSION['id'];
+    $edit_id = $_SESSION['profile_edit_id'];
     $name = $_POST['name'];
     $tagline = $_POST['tagline'];
     $about = mysqli_real_escape_string($data,$_POST['about']);
@@ -15,16 +16,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $formate = ['png'];
 
 if (empty($name)) {
-   header('location:profile-edit.php?id='.$id);
+   header('location:profile-edit.php?id='.$edit_id);
 }
 elseif (empty($tagline)) {
-    header('location:profile-edit.php?id='.$id);
+    header('location:profile-edit.php?id='.$edit_id);
  }
  elseif (empty($about)) {
-    header('location:profile-edit.php?id='.$id);
+    header('location:profile-edit.php?id='.$edit_id);
  }
 elseif (empty($img)) {
-    $insert = "UPDATE `profile` SET `user_name` = '$name' , `tagline` ='$tagline', `about` = '$about' where id = $id";
+    $insert = "UPDATE `profile` SET `user_name` = '$name' , `tagline` ='$tagline', `about` = '$about' where id = $edit_id";
     $q = mysqli_query($data,$insert);
     if ($q) {
         header('location:profile.php');
@@ -33,7 +34,7 @@ elseif (empty($img)) {
 }
 else{
   if (!in_array($ext,$formate)) {
-        header('location:profile-edit.php?id='.$id);
+        header('location:profile-edit.php?id='.$edit_id);
     }
     else {
 
@@ -56,7 +57,7 @@ else{
 
     $uplode_img = 'img-upload/user_image/' . $img_name;
     move_uploaded_file($_FILES['user_image']['tmp_name'], $uplode_img);
-    $insert = "UPDATE `profile` SET `user_name` = '$name' , `tagline` ='$tagline', `about` = '$about' ,`user_image` = '$img_name' where id = $id";
+    $insert = "UPDATE `profile` SET `user_name` = '$name' , `tagline` ='$tagline', `about` = '$about' ,`user_image` = '$img_name' where id = $edit_id";
     $q = mysqli_query($data,$insert);
     if ($q) {
         header('location:profile.php');

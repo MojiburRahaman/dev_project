@@ -119,7 +119,12 @@ $query_users_assoc = mysqli_fetch_assoc($users_query);
           <span class="menu-item-label">All Services</span>
         </div><!-- menu-item -->
       </a>
-      
+      <a href="portfolios.php" class="sl-menu-link">
+        <div class="sl-menu-item">
+          <i class="menu-item-icon icon fa fa-images tx-20"></i>
+          <span class="menu-item-label">Portfolios</span>
+        </div><!-- menu-item -->
+      </a>
       <a href="#" class="sl-menu-link">
           <div class="sl-menu-item">
             <i class="menu-item-icon fa fa-wrench tx-20"></i>

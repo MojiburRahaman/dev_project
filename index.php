@@ -389,8 +389,8 @@ $sub_office_q = mysqli_query($data, $sub_office);
                             </div>
                             <div class="speaker-overlay">
                                 <span>UX/UI</span>
-                                <h4><a href="portfolio-single.html">again there</a></h4>
-                                <a href="portfolio-single.html" class="arrow-btn">More information <span></span></a>
+                                <h4><a href="portfolio-single.php">again there</a></h4>
+                                <a href="portfolio-single.php" class="arrow-btn">More information <span></span></a>
                             </div>
                         </div>
                     </div>
