@@ -21,6 +21,16 @@ $primnary_offc_assoc =  mysqli_fetch_assoc($primnary_offc_q);
 $sub_office = "SELECT * FROM `offices` WHERE status = 2";
 $sub_office_q = mysqli_query($data, $sub_office);
 // sub office query end
+
+// portfoliosquery start
+$portfolio = "SELECT * FROM `portfolios` WHERE status = 1";
+$portfolio_q = mysqli_query($data, $portfolio);
+// portfolios query end
+
+// education start
+$education = "SELECT * FROM `educations`";
+$education_q = mysqli_query($data, $education);
+// education end
 ?>
 
 <html class="no-js" lang="en">
@@ -218,60 +228,22 @@ $sub_office_q = mysqli_query($data, $sub_office);
                             <h3>Education:</h3>
                         </div>
                         <!-- Education Item -->
+                        <?php 
+                foreach($education_q as $key => $value){?>
                         <div class="education">
-                            <div class="year">2020</div>
+                            <div class="year"><?= $value['year']; ?></div>
                             <div class="line"></div>
                             <div class="location">
-                                <span>PHD of Interaction Design &amp; Animation</span>
+                                <span><?= strtoupper($value['title']); ?></span>
                                 <div class="progressWrapper">
                                     <div class="progress">
-                                        <div class="progress-bar wow slideInLefts" data-wow-delay="0.2s" data-wow-duration="2s" role="progressbar" style="width: 65%;" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
+                                        <div class="progress-bar wow slideInLefts" data-wow-delay="0.2s" data-wow-duration="2s" role="progressbar" style="width:<?= $value['progress']; ?>%;" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- End Education Item -->
-                        <!-- Education Item -->
-                        <div class="education">
-                            <div class="year">2016</div>
-                            <div class="line"></div>
-                            <div class="location">
-                                <span>Master of Database Administration</span>
-                                <div class="progressWrapper">
-                                    <div class="progress">
-                                        <div class="progress-bar wow slideInLefts" data-wow-delay="0.2s" data-wow-duration="2s" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Education Item -->
-                        <!-- Education Item -->
-                        <div class="education">
-                            <div class="year">2010</div>
-                            <div class="line"></div>
-                            <div class="location">
-                                <span>Bachelor of Computer Engineering</span>
-                                <div class="progressWrapper">
-                                    <div class="progress">
-                                        <div class="progress-bar wow slideInLefts" data-wow-delay="0.2s" data-wow-duration="2s" role="progressbar" style="width: 85%;" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Education Item -->
-                        <!-- Education Item -->
-                        <div class="education">
-                            <div class="year">2005</div>
-                            <div class="line"></div>
-                            <div class="location">
-                                <span>Diploma of Computer</span>
-                                <div class="progressWrapper">
-                                    <div class="progress">
-                                        <div class="progress-bar wow slideInLefts" data-wow-delay="0.2s" data-wow-duration="2s" role="progressbar" style="width: 90%;" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <?php }
+                        ?>
                         <!-- End Education Item -->
                     </div>
                 </div>
@@ -322,78 +294,26 @@ $sub_office_q = mysqli_query($data, $sub_office);
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-4 col-md-6 pitem">
-                        <div class="speaker-box">
-                            <div class="speaker-thumb">
-                                <img src="front/img/images/1.jpg" alt="img">
-                            </div>
-                            <div class="speaker-overlay">
-                                <span>Design</span>
-                                <h4><a href="portfolio-single.html">Hamble Triangle</a></h4>
-                                <a href="portfolio-single.html" class="arrow-btn">More information <span></span></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 pitem">
-                        <div class="speaker-box">
-                            <div class="speaker-thumb">
-                                <img src="front/img/images/2.jpg" alt="img">
-                            </div>
-                            <div class="speaker-overlay">
-                                <span>Video</span>
-                                <h4><a href="portfolio-single.html">Dark Beauty</a></h4>
-                                <a href="portfolio-single.html" class="arrow-btn">More information <span></span></a>
+                    <?php
+                    foreach ($portfolio_q as $key => $value) {
+                    ?>
+                        <div class="col-lg-4 col-md-6 pitem">
+                            <div class="speaker-box">
+                                <div class="speaker-thumb">
+                                    <img src="dashboard/img-upload/portfolio_image/<?= $value['portfolio_image']; ?>" alt="img">
+                                </div>
+                                <div class="speaker-overlay">
+                                    <span><?= $value['catagory']; ?></span>
+                                    <h4>
+                                    <a href="portfolio-single.php?id=<?= $value['id']; ?>">
+                                            <?= $value['title']; ?>
+                                        </a></h4>
+                                    <a href="portfolio-single.php?id=<?= $value['id']; ?>" class="arrow-btn">More information <span></span></a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 pitem">
-                        <div class="speaker-box">
-                            <div class="speaker-thumb">
-                                <img src="front/img/images/3.jpg" alt="img">
-                            </div>
-                            <div class="speaker-overlay">
-                                <span>Audio</span>
-                                <h4><a href="portfolio-single.html">Gilroy Limbo.</a></h4>
-                                <a href="portfolio-single.html" class="arrow-btn">More information <span></span></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 pitem">
-                        <div class="speaker-box">
-                            <div class="speaker-thumb">
-                                <img src="front/img/images/4.jpg" alt="img">
-                            </div>
-                            <div class="speaker-overlay">
-                                <span>Design</span>
-                                <h4><a href="portfolio-single.html">Ipsum which</a></h4>
-                                <a href="portfolio-single.html" class="arrow-btn">More information <span></span></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 pitem">
-                        <div class="speaker-box">
-                            <div class="speaker-thumb">
-                                <img src="front/img/images/5.jpg" alt="img">
-                            </div>
-                            <div class="speaker-overlay">
-                                <span>Creative</span>
-                                <h4><a href="portfolio-single.html">Eiusmod tempor</a></h4>
-                                <a href="portfolio-single.html" class="arrow-btn">More information <span></span></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 pitem">
-                        <div class="speaker-box">
-                            <div class="speaker-thumb">
-                                <img src="front/img/images/6.jpg" alt="img">
-                            </div>
-                            <div class="speaker-overlay">
-                                <span>UX/UI</span>
-                                <h4><a href="portfolio-single.php">again there</a></h4>
-                                <a href="portfolio-single.php" class="arrow-btn">More information <span></span></a>
-                            </div>
-                        </div>
-                    </div>
+                    <?php }
+                    ?>
                 </div>
             </div>
         </section>
@@ -552,8 +472,8 @@ $sub_office_q = mysqli_query($data, $sub_office);
                             <p>Event definition is - somthing that happens occurre How evesnt sentence. Synonym when an unknown printer took a galley.</p>
                             <?php
                             foreach ($sub_office_q as $key => $value) { ?>
-                            <br>
-                                <h5>OFFICE IN <span><?=ucwords($value['country']);?></span></h5>
+                                <br>
+                                <h5>OFFICE IN <span><?= ucwords($value['country']); ?></span></h5>
                                 <div class="contact-list">
                                     <ul>
                                         <li><i class="fas fa-map-marker"></i><span>Address :</span><?= $value['adress']; ?></li>

@@ -34,7 +34,7 @@ else{
     $q = mysqli_query($data,$insert);
     if ($q) {
         header('location:profile.php');
-        $_SESSION['profile_add_msg'] = "Added Sucessfully";
+        $_SESSION['protfolio_add_msg'] = "Added Sucessfully";
     }
     
 }

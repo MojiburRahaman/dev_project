@@ -1,7 +1,7 @@
 <?php
 require 'inc/header.php';
 
-$portfolio = "SELECT * FROM `portfolios` WHERE status = 1";
+$portfolio = "SELECT * FROM `portfolios`";
 $portfolio_q = mysqli_query($data, $portfolio);
 ?>
 
@@ -16,36 +16,60 @@ $portfolio_q = mysqli_query($data, $portfolio);
         <div class="sl-page-title">
             <!-- warning message -->
             <?php
-            if (isset($_SESSION['profile_add_msg'])) { ?>
+            if (isset($_SESSION['protfolio_add_msg'])) { ?>
                 <div class="alert alert-success ">
                     <span>
                         <?php
-                        echo  $_SESSION['profile_add_msg'];
-                        unset($_SESSION['profile_add_msg']);
+                        echo  $_SESSION['protfolio_add_msg'];
+                        unset($_SESSION['protfolio_add_msg']);
                         ?>
                     </span>
                 </div>
             <?php  }
             ?>
             <?php
-            if (isset($_SESSION['profile_edit_msg'])) { ?>
+            if (isset($_SESSION['portfolio_edit_msg'])) { ?>
                 <div class="alert alert-success ">
                     <span>
                         <?php
-                        echo  $_SESSION['profile_edit_msg'];
-                        unset($_SESSION['profile_edit_msg']);
+                        echo  $_SESSION['portfolio_edit_msg'];
+                        unset($_SESSION['portfolio_edit_msg']);
                         ?>
                     </span>
                 </div>
             <?php  }
             ?>
             <?php
-            if (isset($_SESSION['delete_social'])) { ?>
+            if (isset($_SESSION['portfolio_inactive'])) { ?>
+                <div class="alert alert-warning">
+                    <span>
+                        <?php
+                        echo  $_SESSION['portfolio_inactive'];
+                        unset($_SESSION['portfolio_inactive']);
+                        ?>
+                    </span>
+                </div>
+            <?php  }
+            ?>
+            <?php
+            if (isset($_SESSION['portfolio_active'])) { ?>
+                <div class="alert alert-success">
+                    <span>
+                        <?php
+                        echo  $_SESSION['portfolio_active'];
+                        unset($_SESSION['portfolio_active']);
+                        ?>
+                    </span>
+                </div>
+            <?php  }
+            ?>
+            <?php
+            if (isset($_SESSION['portfolio_delete'])) { ?>
                 <div class="alert alert-danger">
                     <span>
                         <?php
-                        echo  $_SESSION['delete_social'];
-                        unset($_SESSION['delete_social']);
+                        echo  $_SESSION['portfolio_delete'];
+                        unset($_SESSION['portfolio_delete']);
                         ?>
                     </span>
                 </div>
@@ -66,9 +90,11 @@ $portfolio_q = mysqli_query($data, $portfolio);
                         <th style="background-color:#D3D3D3; " class="text-center"> SL</th>
                         <th style="background-color: #D3D3D3; " class="text-center">Catagory</th>
                         <th style="background-color: #D3D3D3; " class="text-center">Title</th>
+                        <th style="background-color: #D3D3D3;" class="text-center">Summary</th>
                         <th style="background-color: #D3D3D3; " class="text-center">Thumbnail</th>
                         <th style="background-color: #D3D3D3; " class="text-center">Featured Image</th>
-                        <th style="background-color: #D3D3D3;" class="text-center">Summary</th>
+
+                        <th style="background-color: #D3D3D3;" class="text-center">Status</th>
                         <th style="background-color: #D3D3D3;" class="text-center">Action</th>
                     </tr>
                 </thead>
@@ -82,16 +108,23 @@ $portfolio_q = mysqli_query($data, $portfolio);
                             <td class="text-center">
                                 <?= $value['title']; ?>
                             </td>
+                            <td>
+                                <?= $value['summary']; ?>
+                            </td>
                             <td class="text-center">
                                 <img width="30" src="img-upload/portfolio_image/<?= $value['thumbnail']; ?>" alt="">
                             </td>
                             <td class="text-center">
                                 <img width="30" src="img-upload/portfolio_image/featured_image/<?= $value['portfolio_image']; ?>" alt="">
                             </td>
-
                             <td>
-                                <?= $value['summary']; ?>
-                            </td>
+                                <?php
+                                if ($value['status'] == 1) { ?>
+                                    <a class="btn btn-success" href="portfolio-inactive.php?id=<?= $value['id']; ?>">Active</a>
+                                <?php } elseif ($value['status'] == 2) { ?>
+                                    <a class=" btn btn-warning" href="portfolio-active.php?id=<?= $value['id']; ?>">inactive</a>
+                                <?php }
+                                ?>
                             </td>
                             <td>
                                 <a class="btn btn-primary" href="portfolio-edit.php?id=<?= $value['id']; ?>">Edit</a>
