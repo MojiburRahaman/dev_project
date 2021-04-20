@@ -1,6 +1,10 @@
 <?php
 require_once '../data.php';
 require_once 'session.php';
+// active start
+$url_explode = explode('/' , $_SERVER['PHP_SELF']);
+$explode_file = end($url_explode);
+// active end
 $users_id = $_SESSION['id'];
 $select = "SELECT * FROM `users` WHERE `id`= '$users_id' ";
 $users_query = mysqli_query($data, $select);
@@ -67,7 +71,7 @@ $query_users_assoc = mysqli_fetch_assoc($users_query);
 
     <label class="sidebar-label">Navigation</label>
     <div class="sl-sideleft-menu">
-      <a href="dashboard.php" class="sl-menu-link">
+      <a href="dashboard.php" class="sl-menu-link <?=$explode_file == 'dashboard.php' ? 'active' : '' ?>">
         <div class="sl-menu-item">
           <i class="menu-item-icon icon ion-ios-home-outline tx-22"></i>
           <span class="menu-item-label">Dashboard</span>
@@ -93,12 +97,12 @@ $query_users_assoc = mysqli_fetch_assoc($users_query);
         </a><!-- sl-menu-link -->
         <ul class="sl-menu-sub nav flex-column">
           <li class="nav-item">
-            <a href="user-active-list.php" class="nav-link">
+            <a href="user-active-list.php" class="nav-link <?=$explode_file == 'user-active-list.php' ? 'active' : '' ?>">
               <i class="menu-item-icon fa fa-user tx-20"></i>
               &nbsp;Active Users</a>
           </li>
           <li class="nav-item">
-            <a href="user-inactive-list.php" class="nav-link">
+            <a href="user-inactive-list.php" class="nav-link <?=$explode_file == 'user-inactive-list.php' ? 'active' : '' ?>">
               <i class="menu-item-icon fa fa-user-times tx-20"></i>
               &nbsp; Inactive Users</a>
           </li>
@@ -107,19 +111,19 @@ $query_users_assoc = mysqli_fetch_assoc($users_query);
       ?>
       <!-- if role=admin -->
 
-      <a href="socials.php" class="sl-menu-link">
+      <a href="socials.php" class="sl-menu-link <?=$explode_file == 'socials.php' ? 'active' : '' ?>">
         <div class="sl-menu-item">
           <i class="menu-item-icon icon fa fa-book tx-20"></i>
           <span class="menu-item-label">All Socials</span>
         </div><!-- menu-item -->
       </a>
-      <a href="services.php" class="sl-menu-link">
+      <a href="services.php" class="sl-menu-link <?=$explode_file == 'services.php' ? 'active' : '' ?>">
         <div class="sl-menu-item">
           <i class="menu-item-icon icon fa fa-cogs tx-20"></i>
           <span class="menu-item-label">All Services</span>
         </div><!-- menu-item -->
       </a>
-      <a href="portfolios.php" class="sl-menu-link">
+      <a href="portfolios.php" class="sl-menu-link <?=$explode_file == 'portfolios.php' ? 'active' : '' ?>">
         <div class="sl-menu-item">
           <i class="menu-item-icon icon fa fa-images tx-20"></i>
           <span class="menu-item-label">Portfolios</span>
@@ -134,12 +138,12 @@ $query_users_assoc = mysqli_fetch_assoc($users_query);
         </a><!-- sl-menu-link -->
         <ul class="sl-menu-sub nav flex-column">
           <li class="nav-item">
-            <a href="profile.php" class="nav-link">
+            <a href="profile.php" class="nav-link <?=$explode_file == 'profile.php' ? 'active' : '' ?>">
               <i class="menu-item-icon fa fa-user tx-20"></i>
               &nbsp;Profile</a>
           </li>
           <li class="nav-item">
-            <a href="offices.php" class="nav-link">
+            <a href="offices.php" class="nav-link <?=$explode_file == 'offices.php' ? 'active' : '' ?>">
               <i class="menu-item-icon fa fa-briefcase tx-20"></i>
               &nbsp;Office Address</a>
           </li>

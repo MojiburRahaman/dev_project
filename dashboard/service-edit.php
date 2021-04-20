@@ -45,7 +45,7 @@ $_SESSION['service_edit_id'] = $id;
                             <div class="form-group">
                                 <label class="form-control-label" for="icon">Icon: <span class="tx-danger">*</span></label>
                                 <select name="icon" id="icon" class="form-control">
-                                    <option value="">
+                                    <option value="<?= $services_assoc['icon']; ?>">
                                         <?php
                                         if ($services_assoc['icon'] == "fa fa-react") {
                                             echo "Creative Design";

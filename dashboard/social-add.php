@@ -42,6 +42,7 @@ require 'inc/header.php';
                                 <select name="icon" id="icon" class="form-control">
                                     <option value="">Select Icon</option>
                                     <option value="fab fa-facebook">Facebook</option>
+                                    <option value="fab fa-facebook-messenger">Messenger</option>
                                     <option value="fab fa-twitter">Twitter</option>
                                     <option value="fab fa-instagram">Instagram</option>
                                     <option value="fab fa-linkedin">LinkedIn</option>

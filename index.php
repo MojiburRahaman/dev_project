@@ -28,9 +28,16 @@ $portfolio_q = mysqli_query($data, $portfolio);
 // portfolios query end
 
 // education start
-$education = "SELECT * FROM `educations`";
+$education = "SELECT * FROM `educations` ORDER BY year DESC";
 $education_q = mysqli_query($data, $education);
 // education end
+
+// feature query start
+$feature = "SELECT * FROM `features`";
+$feature_q = mysqli_query($data, $feature);
+$feature_assoc = mysqli_fetch_assoc($feature_q);
+// feature query end
+
 ?>
 
 <html class="no-js" lang="en">
@@ -300,7 +307,7 @@ $education_q = mysqli_query($data, $education);
                         <div class="col-lg-4 col-md-6 pitem">
                             <div class="speaker-box">
                                 <div class="speaker-thumb">
-                                    <img src="dashboard/img-upload/portfolio_image/<?= $value['portfolio_image']; ?>" alt="img">
+                                    <img src="dashboard/img-upload/portfolio_image/featured_image/<?= $value['portfolio_image']; ?>" alt="img">
                                 </div>
                                 <div class="speaker-overlay">
                                     <span><?= $value['catagory']; ?></span>
@@ -331,7 +338,7 @@ $education_q = mysqli_query($data, $education);
                                     <i class="flaticon-award"></i>
                                 </div>
                                 <div class="fact-content">
-                                    <h2><span class="count">245</span></h2>
+                                    <h2><span class="count"><?= $feature_assoc['feature_item']; ?></span></h2>
                                     <span>Feature Item</span>
                                 </div>
                             </div>
@@ -342,7 +349,7 @@ $education_q = mysqli_query($data, $education);
                                     <i class="flaticon-like"></i>
                                 </div>
                                 <div class="fact-content">
-                                    <h2><span class="count">345</span></h2>
+                                    <h2><span class="count"><?= $feature_assoc['active_product']; ?></span></h2>
                                     <span>Active Products</span>
                                 </div>
                             </div>
@@ -353,7 +360,7 @@ $education_q = mysqli_query($data, $education);
                                     <i class="flaticon-event"></i>
                                 </div>
                                 <div class="fact-content">
-                                    <h2><span class="count">39</span></h2>
+                                    <h2><span class="count"><?= $feature_assoc['year']; ?></span></h2>
                                     <span>Year Experience</span>
                                 </div>
                             </div>
@@ -364,7 +371,7 @@ $education_q = mysqli_query($data, $education);
                                     <i class="flaticon-woman"></i>
                                 </div>
                                 <div class="fact-content">
-                                    <h2><span class="count">3</span>k</h2>
+                                    <h2><span class="count"><?= $feature_assoc['client']; ?></span>k</h2>
                                     <span>Our Clients</span>
                                 </div>
                             </div>

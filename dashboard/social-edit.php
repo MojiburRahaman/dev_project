@@ -25,18 +25,34 @@ $_SESSION['social_edit_id'] = $id;
                         <div class="col-lg-4">
                             <div class="form-group">
                                 <label class="form-control-label" for="name">Name: <span class="tx-danger">*</span></label>
-                                <input value="<?= $q_assoc['name']; ?>" type="text" class="form-control" id="name" placeholder="Enter Name" name="name">
+                                <input value="<?= ucwords($q_assoc['name']); ?>" type="text" class="form-control" id="name" placeholder="Enter Name" name="name">
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <div class="form-group">
                                 <label class="form-control-label" for="icon">Icon: <span class="tx-danger">*</span></label>
                                 <select name="icon" id="icon" class="form-control ">
-                                    <option value="<?= $q_assoc['icon']; ?>">
-                                        <?= ucwords(str_replace('fab fa-', ' ', $q_assoc['icon'])) ?>
-                                    </option>
+                                <option value="<?= $q_assoc['icon']; ?>">
+                                        <?php
+                                        if ($q_assoc['icon'] == "fab fa-facebook") {
+                                            echo "Facebook";
+                                        } elseif ($q_assoc['icon'] == "fab fa-facebook-messenger") {
+                                            echo "Messenger";
+                                        } elseif ($q_assoc['icon'] == "fab fa-twitter") {
+                                            echo "Twitter";
+                                        } elseif ($q_assoc['icon'] == "fab fa-linkedin") {
+                                            echo "Linkedin";
+                                        } elseif ($q_assoc['icon'] == "fab fa-instagram") {
+                                            echo "Instagram";
+                                        }
+                                        elseif ($q_assoc['icon'] == "fab fa-Github") {
+                                            echo "Github";
+                                        }
+                                        ?>
+                                </option>
                                     <option value="">Select Icon</option>
                                     <option value="fab fa-facebook">Facebook</option>
+                                    <option value="fab fa-facebook-messenger">Messenger</option>
                                     <option value="fab fa-twitter">Twitter</option>
                                     <option value="fab fa-instagram">Instagram</option>
                                     <option value="fab fa-linkedin">LinkedIn</option>

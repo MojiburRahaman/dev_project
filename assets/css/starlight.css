@@ -12189,6 +12189,7 @@ textarea.parsley-success:focus {
   color: #343a40;
   background-color: #e9ecef;
 }
+
 .sl-menu-sub .nav-link.active::before {
   opacity: 1;
 }

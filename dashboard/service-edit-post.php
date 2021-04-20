@@ -8,11 +8,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $id =$_SESSION['service_edit_id'];
 
     if (empty($name)) {
-        header('location:social-add.php');
+        header('location:social-edit.php');
     } elseif (empty($icon)) {
-        header('location:social-add.php');
+        header('location:social-edit.php');
     } elseif (empty($summary)) {
-        header('location:social-add.php');
+        header('location:social-edit.php');
     } else {
         $insert = "UPDATE`services` set name = '$name',icon = '$icon',summary = '$summary' WHERE id = $id";
         $data_insert = mysqli_query($data, $insert);
