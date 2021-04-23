@@ -409,7 +409,7 @@ $partner_q = mysqli_query($data, $partner);
                         <div class="testimonial-active">
                             <?php foreach ($review_q as $key => $value) { ?>
                                 <div class="single-testimonial text-center">
-                                    <img src="dashboard/img-upload/review_image/<?= $value['image'] ?>" alt="">
+                                    <img width="100%" src="dashboard/img-upload/review_image/<?= $value['image'] ?>" alt="">
                                 </div>
                             <?php }
                             ?>
@@ -427,9 +427,9 @@ $partner_q = mysqli_query($data, $partner);
 
                 <div class="row brand-active">
                     <?php foreach ($partner_q as $key => $value) {?>
-                    <div class="col-xl-2" style="position: sticky;">
-                        <div class="single-brand">
-                            <img src="dashboard/img-upload/partner_company/<?=$value['image'] ?>" alt="img"> 
+                    <div  class="col-xl-2" >
+                        <div  class="single-brand">
+                            <img width="60%"  src="dashboard/img-upload/partner_company/<?=$value['image'] ?>" alt="img"> 
                         </div>
                     </div>
                     <?php }
