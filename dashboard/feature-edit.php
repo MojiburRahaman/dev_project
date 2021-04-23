@@ -56,7 +56,6 @@ $_SESSION['feature_edit_id'] = $id ;
             <!-- col-4 -->
         </div><!-- row -->
     </div>
-</div>
 
 <?php
 require 'inc/footer.php';

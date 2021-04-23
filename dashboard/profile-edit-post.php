@@ -57,7 +57,7 @@ else{
 
     $uplode_img = 'img-upload/user_image/' . $img_name;
     move_uploaded_file($_FILES['user_image']['tmp_name'], $uplode_img);
-    $insert = "UPDATE `profile` SET `user_name` = '$name' , `tagline` ='$tagline', `about` = '$about' ,`user_image` = '$img_name' where id = $edit_id";
+    $insert = "UPDATE `profile` SET `user_name` = '$name' , `tagline` ='$tagline', `about` = '$about' ,`user_image` = '$img_name' WHERE id = $edit_id";
     $q = mysqli_query($data,$insert);
     if ($q) {
         header('location:profile.php');

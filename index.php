@@ -38,6 +38,10 @@ $feature_q = mysqli_query($data, $feature);
 $feature_assoc = mysqli_fetch_assoc($feature_q);
 // feature query end
 
+// review query start
+$review = "SELECT * FROM `reviews` WHERE status = 1";
+$review_q = mysqli_query($data, $review);
+// review query end
 ?>
 
 <html class="no-js" lang="en">
@@ -178,7 +182,7 @@ $feature_assoc = mysqli_fetch_assoc($feature_q);
                     <div class="col-xl-7 col-lg-6">
                         <div class="banner-content">
                             <h6 class="wow fadeInUp" data-wow-delay="0.2s">HELLO!</h6>
-                            <h2 class="wow fadeInUp" data-wow-delay="0.4s">I am <?= $profile_assoc['user_name']; ?></h2>
+                            <h2 class="wow fadeInUp" data-wow-delay="0.4s">I am <span class="type"></span></h2>
                             <p class="wow fadeInUp" data-wow-delay="0.6s">I'm <?= $profile_assoc['user_name']; ?> , <?= $profile_assoc['tagline']; ?></p>
                             <div class="banner-social wow fadeInUp" data-wow-delay="0.8s">
                                 <ul>
@@ -235,20 +239,20 @@ $feature_assoc = mysqli_fetch_assoc($feature_q);
                             <h3>Education:</h3>
                         </div>
                         <!-- Education Item -->
-                        <?php 
-                foreach($education_q as $key => $value){?>
-                        <div class="education">
-                            <div class="year"><?= $value['year']; ?></div>
-                            <div class="line"></div>
-                            <div class="location">
-                                <span><?= strtoupper($value['title']); ?></span>
-                                <div class="progressWrapper">
-                                    <div class="progress">
-                                        <div class="progress-bar wow slideInLefts" data-wow-delay="0.2s" data-wow-duration="2s" role="progressbar" style="width:<?= $value['progress']; ?>%;" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></div>
+                        <?php
+                        foreach ($education_q as $key => $value) { ?>
+                            <div class="education">
+                                <div class="year"><?= $value['year']; ?></div>
+                                <div class="line"></div>
+                                <div class="location">
+                                    <span><?= strtoupper($value['title']); ?></span>
+                                    <div class="progressWrapper">
+                                        <div class="progress">
+                                            <div class="progress-bar wow slideInLefts" data-wow-delay="0.2s" data-wow-duration="2s" role="progressbar" style="width:<?= $value['progress']; ?>%;" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
                         <?php }
                         ?>
                         <!-- End Education Item -->
@@ -312,9 +316,10 @@ $feature_assoc = mysqli_fetch_assoc($feature_q);
                                 <div class="speaker-overlay">
                                     <span><?= $value['catagory']; ?></span>
                                     <h4>
-                                    <a href="portfolio-single.php?id=<?= $value['id']; ?>">
+                                        <a href="portfolio-single.php?id=<?= $value['id']; ?>">
                                             <?= $value['title']; ?>
-                                        </a></h4>
+                                        </a>
+                                    </h4>
                                     <a href="portfolio-single.php?id=<?= $value['id']; ?>" class="arrow-btn">More information <span></span></a>
                                 </div>
                             </div>
@@ -371,7 +376,7 @@ $feature_assoc = mysqli_fetch_assoc($feature_q);
                                     <i class="flaticon-woman"></i>
                                 </div>
                                 <div class="fact-content">
-                                    <h2><span class="count"><?= $feature_assoc['client']; ?></span>k</h2>
+                                    <h2><span class="count"><?= $feature_assoc['client'] / 1000; ?></span>k</h2>
                                     <span>Our Clients</span>
                                 </div>
                             </div>
@@ -395,32 +400,16 @@ $feature_assoc = mysqli_fetch_assoc($feature_q);
                 </div>
                 <div class="row justify-content-center">
                     <div class="col-xl-9 col-lg-10">
+
                         <div class="testimonial-active">
-                            <div class="single-testimonial text-center">
-                                <div class="testi-avatar">
-                                    <img src="front/img/images/testi_avatar.png" alt="img">
+                            <?php foreach ($review_q as $key => $value) { ?>
+                                <div class="text-center">
+                                    <img src="dashboard/img-upload/review_image/<?= $value['image'] ?>" alt="">
                                 </div>
-                                <div class="testi-content">
-                                    <h4><span>“</span> An event is a message sent by an object to signal the occur rence of an action. The action can causd user interaction such as a button click, or it can result <span>”</span></h4>
-                                    <div class="testi-avatar-info">
-                                        <h5>tonoy jakson</h5>
-                                        <span>head of idea</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single-testimonial text-center">
-                                <div class="testi-avatar">
-                                    <img src="front/img/images/testi_avatar.png" alt="img">
-                                </div>
-                                <div class="testi-content">
-                                    <h4><span>“</span> An event is a message sent by an object to signal the occur rence of an action. The action can causd user interaction such as a button click, or it can result <span>”</span></h4>
-                                    <div class="testi-avatar-info">
-                                        <h5>tonoy jakson</h5>
-                                        <span>head of idea</span>
-                                    </div>
-                                </div>
-                            </div>
+                            <?php }
+                            ?>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -527,8 +516,12 @@ $feature_assoc = mysqli_fetch_assoc($feature_q);
     <!-- footer-end -->
 
 
-
-
+    <script>
+        var typed = new Typed('.type', {
+            strings: ["First sentence.", "Second sentence."],
+            typeSpeed: 30
+        });
+    </script>
 
     <!-- JS here -->
     <script src="front/js/vendor/jquery-1.12.4.min.js"></script>
@@ -537,6 +530,8 @@ $feature_assoc = mysqli_fetch_assoc($feature_q);
     <script src="front/js/isotope.pkgd.min.js"></script>
     <script src="front/js/one-page-nav-min.js"></script>
     <script src="front/js/slick.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
     <script src="front/js/ajax-form.js"></script>
     <script src="front/js/wow.min.js"></script>
     <script src="front/js/aos.js"></script>
@@ -548,7 +543,19 @@ $feature_assoc = mysqli_fetch_assoc($feature_q);
     <script src="front/js/plugins.js"></script>
     <script src="front/js/main.js"></script>
 </body>
-
+<script>
+    var typed = new Typed('.type', {
+        strings: ["<?= $profile_assoc['user_name']; ?> "],
+        typeSpeed: 110,
+        loopCount: Infinity,
+        showCursor: false,
+        startDelay: 700,
+        backDelay: 500,
+        backSpeed: 70,
+        smartBackspace: true,
+        loop: true,
+    });
+</script>
 <!-- Mirrored from themebeyond.com/html/kufa/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 06 Feb 2020 06:28:17 GMT -->
 
 </html>

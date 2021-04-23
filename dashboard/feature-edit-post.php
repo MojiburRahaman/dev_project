@@ -12,27 +12,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $year = $_POST['year'];
         $client = $_POST['client'];
         if (empty($item)) {
-            header('location:features-edit.php');
+            header('location:feature-edit.php?id='.$id);
         } elseif (empty($product)) {
-            header('location:features-edit.php');
+            header('location:feature-edit.php?id='.$id);
         } elseif (empty($year)) {
-            header('location:features-edit.php');
+            header('location:feature-edit.php?id='.$id);
         } elseif (empty($client)) {
-            header('location:features-edit.php');
+            header('location:feature-edit.php?id='.$id);
         } elseif (!is_numeric($client)) {
-            header('location:features-edit.php');
+            header('location:feature-edit.php?id='.$id);
         } elseif (!is_numeric($year)) {
-            header('location:features-edit.php');
+            header('location:feature-edit.php?id='.$id);
         } elseif (!is_numeric($product)) {
-            header('location:features-edit.php');
+            header('location:feature-edit.php?id='.$id);
         } elseif (!is_numeric($item)) {
-            header('location:features-edit.php');
+            header('location:feature-edit.php?id='.$id);
         } else {
-            $insert = "INSERT INTO features (`feature_item`, `active_product`, `year`, `client`) VALUES ('$item','$product','$year','$client')";
+            $insert = "UPDATE features SET feature_item = '$item' ,active_product = '$product',year = '$year' , client= '$client' WHERE id = $id";
             $q = mysqli_query($data, $insert);
             if ($q) {
                 header('location:services.php');
-                $_SESSION['feature_add'] = "Added Succesfully";
+                $_SESSION['feature_edit'] = "Added Succesfully";
             }
         }
     }

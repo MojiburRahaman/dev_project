@@ -159,54 +159,17 @@ $feature_assoc = mysqli_fetch_assoc($feature_q);
                 <?php  }
                 ?>
                 <?php
-                if (isset($_SESSION['service_edit_update'])) { ?>
+                if (isset($_SESSION['feature_edit'])) { ?>
                     <div class="alert alert-success ">
                         <span>
                             <?php
-                            echo  $_SESSION['service_edit_update'];
-                            unset($_SESSION['service_edit_update']);
+                            echo  $_SESSION['feature_edit'];
+                            unset($_SESSION['feature_edit']);
                             ?>
                         </span>
                     </div>
                 <?php  }
                 ?>
-                <?php
-                if (isset($_SESSION['service_active'])) { ?>
-                    <div class="alert alert-success ">
-                        <span>
-                            <?php
-                            echo  $_SESSION['service_active'];
-                            unset($_SESSION['service_active']);
-                            ?>
-                        </span>
-                    </div>
-                <?php  }
-                ?>
-                <?php
-                if (isset($_SESSION['service_inactive'])) { ?>
-                    <div class="alert alert-warning ">
-                        <span>
-                            <?php
-                            echo  $_SESSION['service_inactive'];
-                            unset($_SESSION['service_inactive']);
-                            ?>
-                        </span>
-                    </div>
-                <?php  }
-                ?>
-                <?php
-                if (isset($_SESSION['delete_service'])) { ?>
-                    <div class="alert alert-danger ">
-                        <span>
-                            <?php
-                            echo  $_SESSION['delete_service'];
-                            unset($_SESSION['delete_service']);
-                            ?>
-                        </span>
-                    </div>
-                <?php  }
-                ?>
-
                 <?php
                 if ($feature_assoc['total'] < 1) { ?>
                     <div class="text-right">
@@ -228,7 +191,7 @@ $feature_assoc = mysqli_fetch_assoc($feature_q);
                             </tr>
                         </thead>
                         <tbody>
-                            <td  class="text-center"> <?= $feature_assoc['feature_item']; ?> </td>
+                            <td class="text-center"> <?= $feature_assoc['feature_item']; ?> </td>
                             <td class="text-center"><?= $feature_assoc['active_product']; ?></td>
                             <td class="text-center"> <?= $feature_assoc['year']; ?></td>
                             <td class="text-center"> <?= $feature_assoc['client']; ?></td>
