@@ -16,8 +16,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         } elseif (!in_array($ext, $formate)) {
             header('location:review-add.php');
         } else {
-        //   $test =  mysqli_last_insert_id($data);
-            // $id = mysqli_insert_id($data);
             $id = rand(0 , 10000);
             $img_name = $id . '.' . $ext;
             $uplode_img = 'img-upload/review_image/' . $img_name;

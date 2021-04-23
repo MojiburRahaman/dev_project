@@ -42,6 +42,11 @@ $feature_assoc = mysqli_fetch_assoc($feature_q);
 $review = "SELECT * FROM `reviews` WHERE status = 1";
 $review_q = mysqli_query($data, $review);
 // review query end
+
+// partner query start
+$partner = "SELECT * FROM `partners` WHERE status = 1";
+$partner_q = mysqli_query($data, $partner);
+// partner query end
 ?>
 
 <html class="no-js" lang="en">
@@ -403,7 +408,7 @@ $review_q = mysqli_query($data, $review);
 
                         <div class="testimonial-active">
                             <?php foreach ($review_q as $key => $value) { ?>
-                                <div class="text-center">
+                                <div class="single-testimonial text-center">
                                     <img src="dashboard/img-upload/review_image/<?= $value['image'] ?>" alt="">
                                 </div>
                             <?php }
@@ -419,39 +424,20 @@ $review_q = mysqli_query($data, $review);
         <!-- brand-area -->
         <div class="barnd-area pt-100 pb-100">
             <div class="container">
+
                 <div class="row brand-active">
-                    <div class="col-xl-2">
+                    <?php foreach ($partner_q as $key => $value) {?>
+                    <div class="col-xl-2" style="position: sticky;">
                         <div class="single-brand">
-                            <img src="front/img/brand/brand_img01.png" alt="img">
+                            <img src="dashboard/img-upload/partner_company/<?=$value['image'] ?>" alt="img"> 
                         </div>
                     </div>
-                    <div class="col-xl-2">
-                        <div class="single-brand">
-                            <img src="front/img/brand/brand_img02.png" alt="img">
-                        </div>
-                    </div>
-                    <div class="col-xl-2">
-                        <div class="single-brand">
-                            <img src="front/img/brand/brand_img03.png" alt="img">
-                        </div>
-                    </div>
-                    <div class="col-xl-2">
-                        <div class="single-brand">
-                            <img src="front/img/brand/brand_img04.png" alt="img">
-                        </div>
-                    </div>
-                    <div class="col-xl-2">
-                        <div class="single-brand">
-                            <img src="front/img/brand/brand_img05.png" alt="img">
-                        </div>
-                    </div>
-                    <div class="col-xl-2">
-                        <div class="single-brand">
-                            <img src="front/img/brand/brand_img03.png" alt="img">
-                        </div>
-                    </div>
+                    <?php }
+                    ?>
                 </div>
             </div>
+
+        </div>
         </div>
         <!-- brand-area-end -->
 

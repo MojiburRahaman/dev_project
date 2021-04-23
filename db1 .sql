@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 16, 2021 at 06:38 PM
+-- Generation Time: Apr 23, 2021 at 09:27 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 7.3.27
 
@@ -46,6 +46,27 @@ INSERT INTO `educations` (`id`, `title`, `year`, `progress`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `features`
+--
+
+CREATE TABLE `features` (
+  `id` int(11) NOT NULL,
+  `feature_item` int(11) NOT NULL,
+  `active_product` int(11) NOT NULL,
+  `year` int(11) NOT NULL,
+  `client` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `features`
+--
+
+INSERT INTO `features` (`id`, `feature_item`, `active_product`, `year`, `client`) VALUES
+(1, 10, 2, 1, 5000);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `offices`
 --
 
@@ -70,6 +91,26 @@ INSERT INTO `offices` (`id`, `adress`, `country`, `phone`, `email`, `status`) VA
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `partners`
+--
+
+CREATE TABLE `partners` (
+  `id` int(11) NOT NULL,
+  `image` varchar(200) NOT NULL,
+  `status` int(11) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `partners`
+--
+
+INSERT INTO `partners` (`id`, `image`, `status`) VALUES
+(8, '4522.png', 1),
+(12, '3875.png', 1);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `portfolios`
 --
 
@@ -88,8 +129,9 @@ CREATE TABLE `portfolios` (
 --
 
 INSERT INTO `portfolios` (`id`, `catagory`, `title`, `thumbnail`, `portfolio_image`, `summary`, `status`) VALUES
-(6, 'Web', 'Responsive Web Deisgin', '6.jpg', '6.jpg', 'Express dolor sit amet, consectetur adipiscing elit. Cras sollicitudin, tellus vitae condimem egestliberos dolor auctor tellus, eu consectetur neque elit quis nunc. Cras elementum pretiumi Nullam justo efficitur, trist ligula pellentesque ipsum. Quisque thsr augue ipsum, vehicula tellus maximus. Was popularised in the 1960s withs the release of Letraset sheets containing Lorem Ipsum passags, and more recently with desktop publishing software like Aldus PageMaker including versions.\r\n\r\nRxpress dolor sit amet, consectetur adipiscing elit. Cras sollicitudin, tellus vitae condimem egestlibers dolosr auctor tellus, eu consectetur neque elit quis nunc. Cras elementum pretiumi Nullam justo efficitur, trist ligula pellentesque ipsum. Quisque thsr augue ipsum, vehicula tellus maximus.\r\n\r\nVehicula dolor amet consectetur adipiscing elit. Cras sollicitudin, tellus vitae condimem egestliberos dolor auctor tellus, eu consectetur neque elit quis nunc. Cras elementum pretiumi Nullam justo efficitur, trist ligula pellentesque ipsum. Quisque thsr augue ipsum, vehicula tellus maximus.Express dolor sit amet, consectetur adipiscing elit. Cras sollicitudin, tellus vitae condimem egestliberos dolor auctor tellus, eu consectetur neque elit quis nunc.\r\n\r\nExpress dolor sit amet, consectetur adipiscing elit. Cras sollicitudin, tellus vitae condimem egestliberos dolor auctor tellus, eu consectetur neque elit quis nunc. Cras elementum pretiumi Nullam justo efficitur, trist ligula pellentesque ipsum. Quisque thsr augue ipsum, vehicula tellus maximus. Was popularised in the 1960s withs the release of Letraset sheets containing Lorem Ipsum passags, and more recently with desktop publishing software like Aldus PageMaker including versions.\r\n\r\nVehicula dolor amet consectetur adipiscing elit. Cras sollicitudin, tellus vitae condimem egestliberos dolor auctor tellus, eu consectetur neque elit quis nunc. Cras elementum pretiumi Nullam justo efficitur, trist ligula pellentesque ipsum. Quisque thsr augue ipsum, vehicula tellus maximus.', 1),
-(9, 'Web Development', 'Full Stack Web Development', '6.jpg', '6.jpg', 'Express dolor sit amet, consectetur adipiscing elit. Cras sollicitudin, tellus vitae condimem egestliberos dolor auctor tellus, eu consectetur neque elit quis nunc. Cras elementum pretiumi Nullam justo efficitur, trist ligula pellentesque ipsum. Quisque thsr augue ipsum, vehicula tellus maximus. Was popularised in the 1960s withs the release of Letraset sheets containing Lorem Ipsum passags, and more recently with desktop publishing software like Aldus PageMaker including versions.\r\n\r\nRxpress dolor sit amet, consectetur adipiscing elit. Cras sollicitudin, tellus vitae condimem egestlibers dolosr auctor tellus, eu consectetur neque elit quis nunc. Cras elementum pretiumi Nullam justo efficitur, trist ligula pellentesque ipsum. Quisque thsr augue ipsum, vehicula tellus maximus.\r\n\r\nVehicula dolor amet consectetur adipiscing elit. Cras sollicitudin, tellus vitae condimem egestliberos dolor auctor tellus, eu consectetur neque elit quis nunc. Cras elementum pretiumi Nullam justo efficitur, trist ligula pellentesque ipsum. Quisque thsr augue ipsum, vehicula tellus maximus.Express dolor sit amet, consectetur adipiscing elit. Cras sollicitudin, tellus vitae condimem egestliberos dolor auctor tellus, eu consectetur neque elit quis nunc.\r\n\r\nExpress dolor sit amet, consectetur adipiscing elit. Cras sollicitudin, tellus vitae condimem egestliberos dolor auctor tellus, eu consectetur neque elit quis nunc. Cras elementum pretiumi Nullam justo efficitur, trist ligula pellentesque ipsum. Quisque thsr augue ipsum, vehicula tellus maximus. Was popularised in the 1960s withs the release of Letraset sheets containing Lorem Ipsum passags, and more recently with desktop publishing software like Aldus PageMaker including versions.\r\n\r\nVehicula dolor amet consectetur adipiscing elit. Cras sollicitudin, tellus vitae condimem egestliberos dolor auctor tellus, eu consectetur neque elit quis nunc. Cras elementum pretiumi Nullam justo efficitur, trist ligula pellentesque ipsum. Quisque thsr augue ipsum, vehicula tellus maximus.', 1);
+(6, 'Web', 'Responsive Web Deisgin', '6.jpg', '9.jpg', 'Express dolor sit amet, consectetur adipiscing elit. Cras sollicitudin, tellus vitae condimem egestliberos dolor auctor tellus, eu consectetur neque elit quis nunc. Cras elementum pretiumi Nullam justo efficitur, trist ligula pellentesque ipsum. Quisque thsr augue ipsum, vehicula tellus maximus. Was popularised in the 1960s withs the release of Letraset sheets containing Lorem Ipsum passags, and more recently with desktop publishing software like Aldus PageMaker including versions.\r\n\r\nRxpress dolor sit amet, consectetur adipiscing elit. Cras sollicitudin, tellus vitae condimem egestlibers dolosr auctor tellus, eu consectetur neque elit quis nunc. Cras elementum pretiumi Nullam justo efficitur, trist ligula pellentesque ipsum. Quisque thsr augue ipsum, vehicula tellus maximus.\r\n\r\nVehicula dolor amet consectetur adipiscing elit. Cras sollicitudin, tellus vitae condimem egestliberos dolor auctor tellus, eu consectetur neque elit quis nunc. Cras elementum pretiumi Nullam justo efficitur, trist ligula pellentesque ipsum. Quisque thsr augue ipsum, vehicula tellus maximus.Express dolor sit amet, consectetur adipiscing elit. Cras sollicitudin, tellus vitae condimem egestliberos dolor auctor tellus, eu consectetur neque elit quis nunc.\r\n\r\nExpress dolor sit amet, consectetur adipiscing elit. Cras sollicitudin, tellus vitae condimem egestliberos dolor auctor tellus, eu consectetur neque elit quis nunc. Cras elementum pretiumi Nullam justo efficitur, trist ligula pellentesque ipsum. Quisque thsr augue ipsum, vehicula tellus maximus. Was popularised in the 1960s withs the release of Letraset sheets containing Lorem Ipsum passags, and more recently with desktop publishing software like Aldus PageMaker including versions.\r\n\r\nVehicula dolor amet consectetur adipiscing elit. Cras sollicitudin, tellus vitae condimem egestliberos dolor auctor tellus, eu consectetur neque elit quis nunc. Cras elementum pretiumi Nullam justo efficitur, trist ligula pellentesque ipsum. Quisque thsr augue ipsum, vehicula tellus maximus.', 1),
+(10, 'Cyber Security', 'Cyber Security', '10.jpg', '10.jpg', 'Express dolor sit amet, consectetur adipiscing elit. Cras sollicitudin, tellus vitae condimem egestliberos dolor auctor tellus, eu consectetur neque elit quis nunc. Cras elementum pretiumi Nullam justo efficitur, trist ligula pellentesque ipsum. Quisque thsr augue ipsum, vehicula tellus maximus. Was popularised in the 1960s withs the release of Letraset sheets containing Lorem Ipsum passags, and more recently with desktop publishing software like Aldus PageMaker including versions.', 1),
+(11, 'Web Development', 'Web Development', '11.jpg', '11.jpg', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum indust.', 1);
 
 -- --------------------------------------------------------
 
@@ -110,7 +152,28 @@ CREATE TABLE `profile` (
 --
 
 INSERT INTO `profile` (`id`, `user_name`, `tagline`, `about`, `user_image`) VALUES
-(1, 'Mojibur Rahaman', 'professional web developer and cyber security expert with long time experience in this field​.', '           ipsum\'s dolor sit amet, consectetur adipisicing elit. Rerum, sed repudiandae odit deserunt, quas quibusdam necessitatibus nesciunt eligendi esse sit non reprehenderit quisquam asperiores maxime blanditiis culpa vitae velit. Numquam!  ', 'user_default_image.png');
+(1, 'Mojibur Rahaman', 'professional web developer and cyber security expert with long time experience in this field​.', '           ipsum\'s dolor sit amet, consectetur adipisicing elit. Rerum, sed repudiandae odit deserunt, quas quibusdam necessitatibus nesciunt eligendi esse sit non reprehenderit quisquam asperiores maxime blanditiis culpa vitae velit. Numquam!    ', 'user_default_image.png');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `reviews`
+--
+
+CREATE TABLE `reviews` (
+  `id` int(11) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `status` int(11) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `reviews`
+--
+
+INSERT INTO `reviews` (`id`, `image`, `status`) VALUES
+(3, '1263.png', 1),
+(6, '3564.png', 1),
+(7, '4497.png', 1);
 
 -- --------------------------------------------------------
 
@@ -156,7 +219,7 @@ INSERT INTO `socials` (`id`, `name`, `icon`, `link`, `status`) VALUES
 (1, 'Facebook', 'fab fa-facebook', 'http://facebook.com/mojibur.rahaman736', 1),
 (8, 'Twitter', 'fab fa-twitter', 'https://www.facebook.com/mojibur.rahaman736', 1),
 (10, 'github', 'fab fa-github', 'https://github.com/MojiburRahaman', 1),
-(11, 'Facebook', 'fab fa-facebook', 'https://www.facebook.com/mojibur.rahaman736', 1),
+(11, 'messenger', 'fab fa-facebook-messenger', 'm.me/mojibur.rahaman736', 1),
 (15, 'Facebook', 'fab fa-facebook', 'https://www.facebook.com/mojibur.rahaman736', 1);
 
 -- --------------------------------------------------------
@@ -206,9 +269,21 @@ ALTER TABLE `educations`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `features`
+--
+ALTER TABLE `features`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `offices`
 --
 ALTER TABLE `offices`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `partners`
+--
+ALTER TABLE `partners`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -221,6 +296,12 @@ ALTER TABLE `portfolios`
 -- Indexes for table `profile`
 --
 ALTER TABLE `profile`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `reviews`
+--
+ALTER TABLE `reviews`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -252,22 +333,40 @@ ALTER TABLE `educations`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `features`
+--
+ALTER TABLE `features`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `offices`
 --
 ALTER TABLE `offices`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
+-- AUTO_INCREMENT for table `partners`
+--
+ALTER TABLE `partners`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
 -- AUTO_INCREMENT for table `portfolios`
 --
 ALTER TABLE `portfolios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `profile`
 --
 ALTER TABLE `profile`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `reviews`
+--
+ALTER TABLE `reviews`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `services`

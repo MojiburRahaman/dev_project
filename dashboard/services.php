@@ -194,7 +194,7 @@ $feature_assoc = mysqli_fetch_assoc($feature_q);
                             <td class="text-center"> <?= $feature_assoc['feature_item']; ?> </td>
                             <td class="text-center"><?= $feature_assoc['active_product']; ?></td>
                             <td class="text-center"> <?= $feature_assoc['year']; ?></td>
-                            <td class="text-center"> <?= $feature_assoc['client']; ?></td>
+                            <td class="text-center"> <?= $feature_assoc['client'] / 1000 . 'k'; ?></td>
                             <td class="text-center">
                                 <a href="feature-edit.php?id=<?= $feature_assoc['id']; ?>" class="btn btn-primary">Edit</a>
                             </td>

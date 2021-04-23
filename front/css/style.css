@@ -1509,7 +1509,8 @@ label {
 
 /* 14. testimonial */
 .single-testimonial {
-	padding: 0 65px;
+	/*padding: 0 65px;*/
+	width: 100%;
 }
 .testi-avatar img {
 	display: inline-block;

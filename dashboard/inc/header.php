@@ -135,6 +135,12 @@ $query_users_assoc = mysqli_fetch_assoc($users_query);
           <span class="menu-item-label">Client Reviews</span>
         </div><!-- menu-item -->
       </a>
+      <a href="partners.php" class="sl-menu-link <?= $explode_file == 'partners.php' ? 'active' : '' ?>">
+        <div class="sl-menu-item">
+          <i class="menu-item-icon icon fa fa-handshake tx-20"  style="color: black;"></i>
+          <span class="menu-item-label">Partners</span>
+        </div><!-- menu-item -->
+      </a>
       <a href="#" class="sl-menu-link <?= $explode_file == 'profile.php' ? 'active' : '' ?> <?= $explode_file == 'offices.php' ? 'active' : '' ?>">
         <div class="sl-menu-item">
           <i class="menu-item-icon fa fa-wrench tx-20"></i>
