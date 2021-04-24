@@ -1,6 +1,7 @@
 <!doctype html>
 <?php
 require_once 'data.php';
+session_start();
 $social = "SELECT * FROM socials WHERE status = 1";
 $social_icon = mysqli_query($data, $social);
 
@@ -426,12 +427,12 @@ $partner_q = mysqli_query($data, $partner);
             <div class="container">
 
                 <div class="row brand-active">
-                    <?php foreach ($partner_q as $key => $value) {?>
-                    <div  class="col-xl-2" >
-                        <div  class="single-brand">
-                            <img width="60%"  src="dashboard/img-upload/partner_company/<?=$value['image'] ?>" alt="img"> 
+                    <?php foreach ($partner_q as $key => $value) { ?>
+                        <div class="col-xl-2">
+                            <div class="single-brand">
+                                <img width="60%" src="dashboard/img-upload/partner_company/<?= $value['image'] ?>" alt="img">
+                            </div>
                         </div>
-                    </div>
                     <?php }
                     ?>
                 </div>
@@ -468,10 +469,22 @@ $partner_q = mysqli_query($data, $partner);
                         </div>
                     </div>
                     <div class="col-lg-6">
+                        <?php
+                        if (isset($_SESSION['contact_done'])) { ?>
+                            <div class="alert alert-success ">
+                                <span>
+                                    <?php
+                                    echo  $_SESSION['contact_done'];
+                                    unset($_SESSION['contact_done']);
+                                    ?>
+                                </span>
+                            </div>
+                        <?php  }
+                        ?>
                         <div class="contact-form">
-                            <form action="#">
-                                <input type="text" placeholder="your name *">
-                                <input type="email" placeholder="your email *">
+                            <form action="contact-post.php" method="POST">
+                                <input name="name" type="text" placeholder="your name *">
+                                <input name="email" type="email" placeholder="your email *">
                                 <textarea name="message" id="message" placeholder="your message *"></textarea>
                                 <button class="btn">SEND</button>
                             </form>

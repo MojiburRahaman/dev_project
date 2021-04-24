@@ -33,7 +33,7 @@ if ($query_assoc['total'] > 0) {
 }
 
 else {
-    # code...
+    header('location:login.php');
 }
 
 
