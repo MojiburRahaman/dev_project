@@ -107,7 +107,7 @@ $feature_assoc = mysqli_fetch_assoc($feature_q);
                         foreach ($data_query as $key => $value) { ?>
                             <tr class="active">
                                 <td> <?= ++$key; ?> </td>
-                                <td> <?= $value['name']; ?> </td>
+                                <td> <?= ucwords($value['name']); ?> </td>
                                 <td class="text-center">
                                     <i class="<?= $value['icon']; ?>"></i>
                                 </td>

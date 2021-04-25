@@ -4,7 +4,7 @@ require_once "../data.php";
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $name = $_POST['name'];
     $icon = $_POST['icon'];
-    $summary = $_POST['summary'];
+    $summary = mysqli_real_escape_string($data,$_POST['summary']);
 
     if (empty($name)) {
         header('location:social-add.php');

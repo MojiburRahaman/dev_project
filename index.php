@@ -48,6 +48,13 @@ $review_q = mysqli_query($data, $review);
 $partner = "SELECT * FROM `partners` WHERE status = 1";
 $partner_q = mysqli_query($data, $partner);
 // partner query end
+
+// logo and copyright
+$genral = "SELECT * FROM `general`";
+$genral_q = mysqli_query($data, $genral);
+$genral_asoc =  mysqli_fetch_assoc($genral_q);
+
+// logo and copyright
 ?>
 
 <html class="no-js" lang="en">
@@ -61,7 +68,7 @@ $partner_q = mysqli_query($data, $partner);
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="front/img/favicon.png">
     <!-- Place favicon.ico in the root directory -->
 
     <!-- CSS here -->
@@ -99,8 +106,8 @@ $partner_q = mysqli_query($data, $partner);
                     <div class="col-xl-12">
                         <div class="main-menu">
                             <nav class="navbar navbar-expand-lg">
-                                <a href="index.php" class="navbar-brand logo-sticky-none"><img src="front/img/logo/logo.png" alt="Logo"></a>
-                                <a href="index.php" class="navbar-brand s-logo-none"><img src="front/img/logo/s_logo.png" alt="Logo"></a>
+                                <a href="index.php" class="navbar-brand logo-sticky-none"><img src="dashboard/img-upload/logo/<?= $genral_asoc['logo']; ?>" alt="Logo"></a>
+                                <a href="index.php" class="navbar-brand s-logo-none"><img src="dashboard/img-upload/logo/<?= $genral_asoc['logo']; ?>" alt="Logo"></a>
                                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
                                     <span class="navbar-icon"></span>
                                     <span class="navbar-icon"></span>
@@ -132,8 +139,8 @@ $partner_q = mysqli_query($data, $partner);
                 </button>
             </div>
             <div class="logo-side mb-30">
-                <a href="index-2.html">
-                    <img src="front/img/logo/logo.png" alt="" />
+                <a href="index.php">
+                    <img src="dashboard/img-upload/logo/<?= $genral_asoc['logo']; ?>" alt="logo" />
                 </a>
             </div>
             <div class="side-info mb-30">
@@ -505,7 +512,7 @@ $partner_q = mysqli_query($data, $partner);
                 <div class="row align-items-center">
                     <div class="col-12">
                         <div class="copyright-text text-center">
-                            <p>Copyright© <span>Kufa</span> | All Rights Reserved</p>
+                            <p>Copyright© <span><?= $genral_asoc['copyright']; ?></span> | All Rights Reserved</p>
                         </div>
                     </div>
                 </div>

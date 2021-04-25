@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 23, 2021 at 09:27 PM
+-- Generation Time: Apr 25, 2021 at 02:57 AM
 -- Server version: 10.4.18-MariaDB
--- PHP Version: 7.3.27
+-- PHP Version: 7.4.16
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -67,6 +67,47 @@ INSERT INTO `features` (`id`, `feature_item`, `active_product`, `year`, `client`
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `general`
+--
+
+CREATE TABLE `general` (
+  `id` int(11) NOT NULL,
+  `logo` varchar(200) NOT NULL,
+  `copyright` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `general`
+--
+
+INSERT INTO `general` (`id`, `logo`, `copyright`) VALUES
+(1, '18.png', 'santo');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `message`
+--
+
+CREATE TABLE `message` (
+  `id` int(11) NOT NULL,
+  `name` varchar(250) NOT NULL,
+  `email` varchar(250) NOT NULL,
+  `message` text NOT NULL,
+  `status` int(11) NOT NULL DEFAULT 1 COMMENT '1=unread,2=read'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `message`
+--
+
+INSERT INTO `message` (`id`, `name`, `email`, `message`, `status`) VALUES
+(6, 'Mojibur Rahaman', 'mdsanto034@gmail.com', 'Event definition is - somthing that happens occurre How evesnt sentence. Synonym when an unknown printer took a galley.', 2),
+(7, 'Santo Rahaman', 'mdsanto034@gmail.com', 'hi there', 2);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `offices`
 --
 
@@ -84,9 +125,9 @@ CREATE TABLE `offices` (
 --
 
 INSERT INTO `offices` (`id`, `adress`, `country`, `phone`, `email`, `status`) VALUES
-(12, '123/A, Miranda City Likaoli Prikano, Dope', '', 1111, 'ok@example.com', '1'),
+(12, 'Chandpur', '', 123456789, 'santo68683@gmail.com', '1'),
 (13, 'Miranda City Likaoli Prikano, Dope', 'Chandpur', 2147483647, 'mdsanto034@gmail.com', '2'),
-(14, 'Miranda City Likaoli Prikano, Dope', 'Dhaaka', 2147483647, 'santo034@gmail.com', '2');
+(14, 'Miranda City Likaoli Prikano, Dope', 'Dhaka', 2147483647, 'santo034@gmail.com', '2');
 
 -- --------------------------------------------------------
 
@@ -105,8 +146,12 @@ CREATE TABLE `partners` (
 --
 
 INSERT INTO `partners` (`id`, `image`, `status`) VALUES
-(8, '4522.png', 1),
-(12, '3875.png', 1);
+(8, '2197.png', 1),
+(13, '5867.png', 1),
+(18, '343.png', 1),
+(19, '7674.png', 1),
+(20, '3567.png', 1),
+(21, '166.png', 1);
 
 -- --------------------------------------------------------
 
@@ -129,7 +174,7 @@ CREATE TABLE `portfolios` (
 --
 
 INSERT INTO `portfolios` (`id`, `catagory`, `title`, `thumbnail`, `portfolio_image`, `summary`, `status`) VALUES
-(6, 'Web', 'Responsive Web Deisgin', '6.jpg', '9.jpg', 'Express dolor sit amet, consectetur adipiscing elit. Cras sollicitudin, tellus vitae condimem egestliberos dolor auctor tellus, eu consectetur neque elit quis nunc. Cras elementum pretiumi Nullam justo efficitur, trist ligula pellentesque ipsum. Quisque thsr augue ipsum, vehicula tellus maximus. Was popularised in the 1960s withs the release of Letraset sheets containing Lorem Ipsum passags, and more recently with desktop publishing software like Aldus PageMaker including versions.\r\n\r\nRxpress dolor sit amet, consectetur adipiscing elit. Cras sollicitudin, tellus vitae condimem egestlibers dolosr auctor tellus, eu consectetur neque elit quis nunc. Cras elementum pretiumi Nullam justo efficitur, trist ligula pellentesque ipsum. Quisque thsr augue ipsum, vehicula tellus maximus.\r\n\r\nVehicula dolor amet consectetur adipiscing elit. Cras sollicitudin, tellus vitae condimem egestliberos dolor auctor tellus, eu consectetur neque elit quis nunc. Cras elementum pretiumi Nullam justo efficitur, trist ligula pellentesque ipsum. Quisque thsr augue ipsum, vehicula tellus maximus.Express dolor sit amet, consectetur adipiscing elit. Cras sollicitudin, tellus vitae condimem egestliberos dolor auctor tellus, eu consectetur neque elit quis nunc.\r\n\r\nExpress dolor sit amet, consectetur adipiscing elit. Cras sollicitudin, tellus vitae condimem egestliberos dolor auctor tellus, eu consectetur neque elit quis nunc. Cras elementum pretiumi Nullam justo efficitur, trist ligula pellentesque ipsum. Quisque thsr augue ipsum, vehicula tellus maximus. Was popularised in the 1960s withs the release of Letraset sheets containing Lorem Ipsum passags, and more recently with desktop publishing software like Aldus PageMaker including versions.\r\n\r\nVehicula dolor amet consectetur adipiscing elit. Cras sollicitudin, tellus vitae condimem egestliberos dolor auctor tellus, eu consectetur neque elit quis nunc. Cras elementum pretiumi Nullam justo efficitur, trist ligula pellentesque ipsum. Quisque thsr augue ipsum, vehicula tellus maximus.', 1),
+(6, 'Web', 'Responsive Web Deisgin', '6.jpg', '9.jpg', 'Express\'s dolor sit amet, consectetur adipiscing elit. Cras sollicitudin, tellus vitae condimem egestliberos dolor auctor tellus, eu consectetur neque elit quis nunc. Cras elementum pretiumi Nullam justo efficitur, trist ligula pellentesque ipsum. Quisque thsr augue ipsum, vehicula tellus maximus. Was popularised in the 1960s withs the release of Letraset sheets containing Lorem Ipsum passags, and more recently with desktop publishing software like Aldus PageMaker including versions.\r\n\r\nRxpress dolor sit amet, consectetur adipiscing elit. Cras sollicitudin, tellus vitae condimem egestlibers dolosr auctor tellus, eu consectetur neque elit quis nunc. Cras elementum pretiumi Nullam justo efficitur, trist ligula pellentesque ipsum. Quisque thsr augue ipsum, vehicula tellus maximus.\r\n\r\nVehicula dolor amet consectetur adipiscing elit. Cras sollicitudin, tellus vitae condimem egestliberos dolor auctor tellus, eu consectetur neque elit quis nunc. Cras elementum pretiumi Nullam justo efficitur, trist ligula pellentesque ipsum. Quisque thsr augue ipsum, vehicula tellus maximus.Express dolor sit amet, consectetur adipiscing elit. Cras sollicitudin, tellus vitae condimem egestliberos dolor auctor tellus, eu consectetur neque elit quis nunc.\r\n\r\nExpress dolor sit amet, consectetur adipiscing elit. Cras sollicitudin, tellus vitae condimem egestliberos dolor auctor tellus, eu consectetur neque elit quis nunc. Cras elementum pretiumi Nullam justo efficitur, trist ligula pellentesque ipsum. Quisque thsr augue ipsum, vehicula tellus maximus. Was popularised in the 1960s withs the release of Letraset sheets containing Lorem Ipsum passags, and more recently with desktop publishing software like Aldus PageMaker including versions.\r\n\r\nVehicula dolor amet consectetur adipiscing elit. Cras sollicitudin, tellus vitae condimem egestliberos dolor auctor tellus, eu consectetur neque elit quis nunc. Cras elementum pretiumi Nullam justo efficitur, trist ligula pellentesque ipsum. Quisque thsr augue ipsum, vehicula tellus maximus.', 1),
 (10, 'Cyber Security', 'Cyber Security', '10.jpg', '10.jpg', 'Express dolor sit amet, consectetur adipiscing elit. Cras sollicitudin, tellus vitae condimem egestliberos dolor auctor tellus, eu consectetur neque elit quis nunc. Cras elementum pretiumi Nullam justo efficitur, trist ligula pellentesque ipsum. Quisque thsr augue ipsum, vehicula tellus maximus. Was popularised in the 1960s withs the release of Letraset sheets containing Lorem Ipsum passags, and more recently with desktop publishing software like Aldus PageMaker including versions.', 1),
 (11, 'Web Development', 'Web Development', '11.jpg', '11.jpg', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum indust.', 1);
 
@@ -171,7 +216,7 @@ CREATE TABLE `reviews` (
 --
 
 INSERT INTO `reviews` (`id`, `image`, `status`) VALUES
-(3, '1263.png', 1),
+(3, '4437.png', 1),
 (6, '3564.png', 1),
 (7, '4497.png', 1);
 
@@ -195,7 +240,8 @@ CREATE TABLE `services` (
 
 INSERT INTO `services` (`id`, `name`, `icon`, `summary`, `status`) VALUES
 (1, 'CREATIVE DESIGN', 'fa fa-edit', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum indust.', 1),
-(2, 'Features', 'fab fa-free-code-camp', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum indust.', 1);
+(2, 'Features', 'fab fa-free-code-camp', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum indust.', 1),
+(3, 'web development', 'fab fa-free-code-camp', 'Event definition is - somthing that happens occurre How evesnt sentence. Synonym when an unknown printer took a galley.\r\n\r\n', 1);
 
 -- --------------------------------------------------------
 
@@ -243,19 +289,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `passwords`, `status`, `role`, `profile_img`) VALUES
-(28, 'santo156', 'mojibur454@gmail.com', '$2y$10$.0huKMEapi7pvnRxbhNhj.yQiH78J8r60MoXLGdc/OSW6ENrb2XWy', 1, 1, 'default.png'),
-(31, 'rahaman', 'rahaman@gmail.com', '$2y$10$3JH6RC/rxY2auR/FzEpqD.GU8aPm2TSLXxHAICL8ykwpyfSY5KHxO', 1, 3, 'default.png'),
-(35, 'tuhin', 'jaskjhaskj@gmail.com', '$2y$10$r1n8y1sLqGFiHUkq35mStuuDW4UPAKRW24FjOyDo65yzgls23OMDK', 1, 1, 'default.png'),
-(37, 'santo345', 'santo8676564@gmail.com', '$2y$10$oKzwzJTaWRK4wMQRtWbpM.Pfkk0Ri7WUWOm/hnpak9jTNPvHNYBsG', 1, 1, 'default.png'),
-(38, 'santo rehman', 'santorehman4523@gmail.com', '$2y$10$a/a542FozsWXwp33myTOrejypC4RP1jVAyKJbTG6dcNqtfbYcEPVm', 1, 1, 'default.png'),
-(39, 'sdfa', 'santorehman43366@gmail.com', '$2y$10$exJAuQzHOQi8n3U8XyZP6O8Gus1cTy19Ft2DFQjPnvcp0ALOL7bWi', 1, 1, 'default.png'),
-(40, 's', 'santorehman16758@gmail.com', '$2y$10$99b..V/.un.WfFUBR5a5qesVIufqNpWTT8fb9zM9/.O0MEBkvVU56', 1, 2, 'default.png'),
-(41, 'santo156', 'mojibur45324@gmail.com', '$2y$10$.0huKMEapi7pvnRxbhNhj.yQiH78J8r60MoXLGdc/OSW6ENrb2XWy', 1, 1, 'default.png'),
-(42, 'ashraful', 'zeebon224523@honeys.be', '$2y$10$536yn9WJa9w0QkqHPCD6B.QaA8GpPK7m5jf7I1Bws78kcKBCF8txi', 1, 1, 'default.png'),
-(43, 'rahaman', 'rahaman342@gmail.com', '$2y$10$3JH6RC/rxY2auR/FzEpqD.GU8aPm2TSLXxHAICL8ykwpyfSY5KHxO', 1, 1, 'default.png'),
-(46, 'emran', 'emran@gmail.com', '$2y$10$VHXLifASoA0vtrzjPmt.ROQiMHRn5ySDETHto37RWC./nP.T0jVS2', 1, 1, 'default.png'),
-(47, 'taher', 'kjbdkjba6473@gmail.com', '$2y$10$9XeS.bY1mBGvUbSBRkFBb.nzWMaFgelAyjkeTHnYJGOQfUaK2Enwe', 1, 1, 'default.png'),
-(48, 'Santo', 'mdsanto034@gmail.com', '$2y$10$t.lNIvNZOphxSTEFmu/AMOKrnY50V1v0r.IT8zL3lj/RnobDIflDm', 1, 3, '48.png'),
+(48, 'Santo Rahaman', 'mdsanto034@gmail.com', '$2y$10$t.lNIvNZOphxSTEFmu/AMOKrnY50V1v0r.IT8zL3lj/RnobDIflDm', 1, 3, '48.png'),
 (49, 'mojibur', 'mdsanto57034@gmail.com', '$2y$10$vPkeArv1EJuXodyuXen38.LBk0YE8D7.dkX7H2PeRFvP5M9fU8oQy', 1, 2, 'default.png');
 
 --
@@ -272,6 +306,18 @@ ALTER TABLE `educations`
 -- Indexes for table `features`
 --
 ALTER TABLE `features`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `general`
+--
+ALTER TABLE `general`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `message`
+--
+ALTER TABLE `message`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -339,6 +385,18 @@ ALTER TABLE `features`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `general`
+--
+ALTER TABLE `general`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `message`
+--
+ALTER TABLE `message`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT for table `offices`
 --
 ALTER TABLE `offices`
@@ -348,7 +406,7 @@ ALTER TABLE `offices`
 -- AUTO_INCREMENT for table `partners`
 --
 ALTER TABLE `partners`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `portfolios`
@@ -372,7 +430,7 @@ ALTER TABLE `reviews`
 -- AUTO_INCREMENT for table `services`
 --
 ALTER TABLE `services`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `socials`

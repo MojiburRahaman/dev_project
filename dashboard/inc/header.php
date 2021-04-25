@@ -9,6 +9,15 @@ $users_id = $_SESSION['id'];
 $select = "SELECT * FROM `users` WHERE `id`= '$users_id' ";
 $users_query = mysqli_query($data, $select);
 $query_users_assoc = mysqli_fetch_assoc($users_query);
+
+// message start
+$msg = "SELECT COUNT(*) as total FROM `message` WHERE status = 1";
+$msg_q = mysqli_query($data, $msg);
+$msg_assoc = mysqli_fetch_assoc($msg_q);
+
+$contact = "SELECT * FROM `message` WHERE status = 1 ORDER BY id DESC";
+$contact_q = mysqli_query($data, $contact);
+// message end
 ?>
 
 
@@ -73,7 +82,7 @@ $query_users_assoc = mysqli_fetch_assoc($users_query);
     <div class="sl-sideleft-menu">
       <a href="dashboard.php" class="sl-menu-link <?= $explode_file == 'dashboard.php' ? 'active' : '' ?>">
         <div class="sl-menu-item">
-          <i class="menu-item-icon icon ion-ios-home-outline tx-22" style="color: red;"></i>
+          <i class="menu-item-icon icon ion-ios-home-outline tx-22"></i>
           <span class="menu-item-label">Dashboard</span>
         </div><!-- menu-item -->
       </a><!-- sl-menu-link -->
@@ -92,7 +101,7 @@ $query_users_assoc = mysqli_fetch_assoc($users_query);
           <div class="sl-menu-item">
             <i class="menu-item-icon fa fa-users tx-20" style="color: black;"></i>
             <span class="menu-item-label">Users</span>
-            <i class="menu-item-arrow fa fa-angle-down" ></i>
+            <i class="menu-item-arrow fa fa-angle-down"></i>
           </div><!-- menu-item -->
         </a><!-- sl-menu-link -->
         <ul class="sl-menu-sub nav flex-column">
@@ -119,29 +128,35 @@ $query_users_assoc = mysqli_fetch_assoc($users_query);
       </a>
       <a href="services.php" class="sl-menu-link <?= $explode_file == 'services.php' ? 'active' : '' ?>">
         <div class="sl-menu-item">
-          <i class="menu-item-icon icon fa fa-cogs tx-20" style="color: #808080;" ></i>
+          <i class="menu-item-icon icon fa fa-cogs tx-20" style="color: #808080;"></i>
           <span class="menu-item-label">All Services</span>
         </div><!-- menu-item -->
       </a>
       <a href="portfolios.php" class="sl-menu-link <?= $explode_file == 'portfolios.php' ? 'active' : '' ?>">
         <div class="sl-menu-item">
-          <i class="menu-item-icon icon fa fa-images tx-20"  style="color: #8FBC8F;"></i>
+          <i class="menu-item-icon icon fa fa-images tx-20" style="color: #8FBC8F;"></i>
           <span class="menu-item-label">Portfolios</span>
         </div><!-- menu-item -->
       </a>
       <a href="reviews.php" class="sl-menu-link <?= $explode_file == 'reviews.php' ? 'active' : '' ?>">
         <div class="sl-menu-item">
-          <i class="menu-item-icon icon fa fa-star-half-alt tx-20"  style="color: #DAA520;"></i>
+          <i class="menu-item-icon icon fa fa-star-half-alt tx-20" style="color: #DAA520;"></i>
           <span class="menu-item-label">Client Reviews</span>
+        </div><!-- menu-item -->
+      </a>
+      <a href="messages.php" class="sl-menu-link <?= $explode_file == 'messages.php' ? 'active' : '' ?>">
+        <div class="sl-menu-item">
+          <i class="menu-item-icon icon fa fa-envelope-open-text tx-20" style="color: black;"></i>
+          <span class="menu-item-label">Messages</span>
         </div><!-- menu-item -->
       </a>
       <a href="partners.php" class="sl-menu-link <?= $explode_file == 'partners.php' ? 'active' : '' ?>">
         <div class="sl-menu-item">
-          <i class="menu-item-icon icon fa fa-handshake tx-20"  style="color: black;"></i>
+          <i class="menu-item-icon icon fa fa-handshake tx-20" style="color: black;"></i>
           <span class="menu-item-label">Partners</span>
         </div><!-- menu-item -->
       </a>
-      <a href="#" class="sl-menu-link <?= $explode_file == 'profile.php' ? 'active' : '' ?> <?= $explode_file == 'offices.php' ? 'active' : '' ?>">
+      <a href="#" class="sl-menu-link <?= $explode_file == 'general-settings.php' ? 'active' : '' ?> <?= $explode_file == 'profile.php' ? 'active' : '' ?> <?= $explode_file == 'offices.php' ? 'active' : '' ?>">
         <div class="sl-menu-item">
           <i class="menu-item-icon fa fa-wrench tx-20"></i>
           <span class="menu-item-label">Settings</span>
@@ -149,6 +164,11 @@ $query_users_assoc = mysqli_fetch_assoc($users_query);
         </div><!-- menu-item -->
       </a><!-- sl-menu-link -->
       <ul class="sl-menu-sub nav flex-column ">
+        <li class="nav-item">
+          <a href="general-settings.php" class="nav-link <?= $explode_file == 'general-settings.php' ? 'active' : '' ?>">
+            <i class="menu-item-icon fa fa-cog tx-20"></i>
+            &nbsp;General Settings</a>
+        </li>
         <li class="nav-item">
           <a href="profile.php" class="nav-link <?= $explode_file == 'profile.php' ? 'active' : '' ?>">
             <i class="menu-item-icon fa fa-user tx-20"></i>
@@ -159,6 +179,7 @@ $query_users_assoc = mysqli_fetch_assoc($users_query);
             <i class="menu-item-icon fa fa-briefcase tx-20"></i>
             &nbsp;Office Address</a>
         </li>
+
       </ul>
 
     </div><!-- sl-sideleft-menu -->
@@ -207,7 +228,7 @@ $query_users_assoc = mysqli_fetch_assoc($users_query);
   <div class="sl-sideright">
     <ul class="nav nav-tabs nav-fill sidebar-tabs" role="tablist">
       <li class="nav-item">
-        <a class="nav-link active" data-toggle="tab" role="tab" href="#messages">Messages (2)</a>
+        <a class="nav-link active" data-toggle="tab" role="tab" href="#messages">Messages (<?= $msg_assoc['total'] ?>)</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" data-toggle="tab" role="tab" href="#notifications">Notifications (8)</a>
@@ -218,63 +239,37 @@ $query_users_assoc = mysqli_fetch_assoc($users_query);
     <div class="tab-content">
       <div class="tab-pane pos-absolute a-0 mg-t-60 active" id="messages" role="tabpanel">
         <div class="media-list">
+          <?php
+          if ($msg_assoc['total'] < 1) {
+          ?>
+            <div class="media-body">
+              <p class="tx-13 mg-t-10 mg-b-0">No Messages</p>
+            </div>
+          <?php
+          }
+          ?>
           <!-- loop starts here -->
-          <a href="" class="media-list-link">
-            <div class="media">
-              <img src="../img/img3.jpg" class="wd-40 rounded-circle" alt="">
-              <div class="media-body">
-                <p class="mg-b-0 tx-medium tx-gray-800 tx-13">Donna Seay</p>
-                <span class="d-block tx-11 tx-gray-500">2 minutes ago</span>
-                <p class="tx-13 mg-t-10 mg-b-0">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring.</p>
-              </div>
-            </div><!-- media -->
-          </a>
-          <!-- loop ends here -->
-          <a href="" class="media-list-link">
-            <div class="media">
-              <img src="../img/img4.jpg" class="wd-40 rounded-circle" alt="">
-              <div class="media-body">
-                <p class="mg-b-0 tx-medium tx-gray-800 tx-13">Samantha Francis</p>
-                <span class="d-block tx-11 tx-gray-500">3 hours ago</span>
-                <p class="tx-13 mg-t-10 mg-b-0">My entire soul, like these sweet mornings of spring.</p>
-              </div>
-            </div><!-- media -->
-          </a>
-          <a href="" class="media-list-link">
-            <div class="media">
-              <img src="../img/img7.jpg" class="wd-40 rounded-circle" alt="">
-              <div class="media-body">
-                <p class="mg-b-0 tx-medium tx-gray-800 tx-13">Robert Walker</p>
-                <span class="d-block tx-11 tx-gray-500">5 hours ago</span>
-                <p class="tx-13 mg-t-10 mg-b-0">I should be incapable of drawing a single stroke at the present moment...</p>
-              </div>
-            </div><!-- media -->
-          </a>
-          <a href="" class="media-list-link">
-            <div class="media">
-              <img src="../img/img5.jpg" class="wd-40 rounded-circle" alt="">
-              <div class="media-body">
-                <p class="mg-b-0 tx-medium tx-gray-800 tx-13">Larry Smith</p>
-                <span class="d-block tx-11 tx-gray-500">Yesterday, 8:34pm</span>
-
-                <p class="tx-13 mg-t-10 mg-b-0">When, while the lovely valley teems with vapour around me, and the meridian sun strikes...</p>
-              </div>
-            </div><!-- media -->
-          </a>
-          <a href="" class="media-list-link">
-            <div class="media">
-              <img src="../img/img3.jpg" class="wd-40 rounded-circle" alt="">
-              <div class="media-body">
-                <p class="mg-b-0 tx-medium tx-gray-800 tx-13">Donna Seay</p>
-                <span class="d-block tx-11 tx-gray-500">Jan 23, 2:32am</span>
-                <p class="tx-13 mg-t-10 mg-b-0">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring.</p>
-              </div>
-            </div><!-- media -->
-          </a>
+          <?php foreach ($contact_q as $key => $value) { ?>
+            <a href="message-read.php?id=<?= $value['id']; ?>" class="media-list-link">
+              <div class="media">
+                <div class="media-body">
+                  <p class="mg-b-0 tx-medium tx-gray-800 tx-13"><?= $value['name'] ?></p>
+                  <p class="tx-13 mg-t-10 mg-b-0"><?= $value['message'] ?> </p>
+                </div>
+              </div><!-- media -->
+            </a>
+          <?php }
+          ?>
         </div><!-- media-list -->
-        <div class="pd-15">
-          <a href="" class="btn btn-secondary btn-block bd-0 rounded-0 tx-10 tx-uppercase tx-mont tx-medium tx-spacing-2">View More Messages</a>
-        </div>
+        <?php
+        if ($msg_assoc['total'] > 3) {
+        ?>
+          <div class="pd-15">
+            <a href="messages.php" class="btn btn-secondary btn-block bd-0 rounded-0 tx-10 tx-uppercase tx-mont tx-medium tx-spacing-2">View More Messages</a>
+          </div>
+        <?php
+        }
+        ?>
       </div><!-- #messages -->
 
       <div class="tab-pane pos-absolute a-0 mg-t-60 overflow-y-auto" id="notifications" role="tabpanel">

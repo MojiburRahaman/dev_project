@@ -69,7 +69,6 @@ require 'inc/header.php';
             <!-- col-4 -->
         </div><!-- row -->
     </div>
-</div>
 
 <?php
 require 'inc/footer.php';
